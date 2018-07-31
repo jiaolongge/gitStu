@@ -1,6 +1,2 @@
-<<<<<<< HEAD
+
 has finished branchFeature
-ºÜ·³£¬Íæ²»×ª
-=======
-add 
->>>>>>> branchTest
