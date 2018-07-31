@@ -1,1 +1,1 @@
-finish branchFeature
+has finished branchFeature
