@@ -1,1 +1,1 @@
-# myRepositorie
+# gitStu
