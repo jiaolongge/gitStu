@@ -4,40 +4,31 @@
 // 访问者模式将有关行为集中到一个访问者对象中，其改变不影响系统数据结构。其缺点就是增加新的数据结构很困难。
 var Visitor;
 (function (Visitor_1) {
-    var Visitor = /** @class */ (function () {
-        function Visitor() {
-        }
+    class Visitor {
         // @Override
-        Visitor.prototype.visit = function (subject) {
+        visit(subject) {
             console.log("处理subject数据:" + subject.getSubject());
-        };
-        return Visitor;
-    }());
+        }
+    }
     Visitor_1.Visitor = Visitor;
-    var Subject = /** @class */ (function () {
-        function Subject() {
-        }
+    class Subject {
         // @Override
-        Subject.prototype.accept = function (visitor) {
+        accept(visitor) {
             visitor.visit(this);
-        };
-        // @Override
-        Subject.prototype.getSubject = function () {
-            return "这是subject数据";
-        };
-        return Subject;
-    }());
-    Visitor_1.Subject = Subject;
-    var Test = /** @class */ (function () {
-        function Test() {
         }
-        Test.runTest = function () {
-            var subject = new Subject();
-            var visitor = new Visitor();
+        // @Override
+        getSubject() {
+            return "这是subject数据";
+        }
+    }
+    Visitor_1.Subject = Subject;
+    class Test {
+        static runTest() {
+            const subject = new Subject();
+            const visitor = new Visitor();
             subject.accept(visitor);
-        };
-        return Test;
-    }());
+        }
+    }
     Visitor_1.Test = Test;
 })(Visitor || (Visitor = {}));
 // 执行测试

@@ -1,73 +1,68 @@
 // 迭代子模式
 var Itetator;
 (function (Itetator) {
-    var Iterator = /** @class */ (function () {
-        function Iterator(collection) {
+    class Iterator {
+        constructor(collection) {
             this.pos = -1;
             this.collection = collection;
         }
         // @Override
-        Iterator.prototype.previous = function () {
+        previous() {
             if (this.pos > 0) {
                 this.pos--;
             }
             return this.collection.getIterator(this.pos);
-        };
+        }
         // @Override
-        Iterator.prototype.next = function () {
+        next() {
             if (this.pos < this.collection.getSize() - 1) {
                 this.pos++;
             }
             return this.collection.getIterator(this.pos);
-        };
+        }
         // @Override
-        Iterator.prototype.hasNext = function () {
+        hasNext() {
             if (this.pos < this.collection.getSize() - 1) {
                 return true;
             }
             else {
                 return false;
             }
-        };
+        }
         // @Override
-        Iterator.prototype.first = function () {
+        first() {
             this.pos = 0;
             return this.collection.getIterator(this.pos);
-        };
-        return Iterator;
-    }());
+        }
+    }
     Itetator.Iterator = Iterator;
-    var Collection = /** @class */ (function () {
-        function Collection() {
+    class Collection {
+        constructor() {
             this.stringArr = ["A", "B", "C", "D", "E"];
         }
         // @Override
-        Collection.prototype.iterator = function () {
+        iterator() {
             return new Iterator(this);
-        };
-        // @Override
-        Collection.prototype.getSize = function () {
-            return this.stringArr.length;
-        };
-        // @Override
-        Collection.prototype.getIterator = function (i) {
-            return this.stringArr[i];
-        };
-        return Collection;
-    }());
-    Itetator.Collection = Collection;
-    var Test = /** @class */ (function () {
-        function Test() {
         }
-        Test.runTest = function () {
-            var collection = new Collection();
-            var iterator = collection.iterator();
+        // @Override
+        getSize() {
+            return this.stringArr.length;
+        }
+        // @Override
+        getIterator(i) {
+            return this.stringArr[i];
+        }
+    }
+    Itetator.Collection = Collection;
+    class Test {
+        static runTest() {
+            const collection = new Collection();
+            const iterator = collection.iterator();
             while (iterator.hasNext()) {
                 console.log(iterator.next());
             }
-        };
-        return Test;
-    }());
+        }
+    }
     Itetator.Test = Test;
 })(Itetator || (Itetator = {}));
 // 执行测试

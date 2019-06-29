@@ -1,48 +1,44 @@
 // 组合模式，适合处理树型结构
 var Composite;
 (function (Composite) {
-    var TreeNode = /** @class */ (function () {
-        function TreeNode(name) {
+    class TreeNode {
+        constructor(name) {
             this.children = new Array();
             this.name = name;
         }
-        TreeNode.prototype.getName = function () {
+        getName() {
             return this.name;
-        };
-        TreeNode.prototype.setName = function (name) {
-            this.name = name;
-        };
-        TreeNode.prototype.getParent = function () {
-            return this.parent;
-        };
-        TreeNode.prototype.setParent = function (parent) {
-            this.parent = parent;
-        };
-        TreeNode.prototype.add = function (node) {
-            this.children.push(node);
-        };
-        TreeNode.prototype.remove = function (node) {
-            this.children = this.children.filter(function (child) { return (child !== node); });
-        };
-        TreeNode.prototype.getChildren = function () {
-            return this.children;
-        };
-        return TreeNode;
-    }());
-    Composite.TreeNode = TreeNode;
-    var Test = /** @class */ (function () {
-        function Test() {
         }
-        Test.runTest = function () {
-            var root = new TreeNode("root");
-            var a = new TreeNode("A");
-            var b = new TreeNode("B");
+        setName(name) {
+            this.name = name;
+        }
+        getParent() {
+            return this.parent;
+        }
+        setParent(parent) {
+            this.parent = parent;
+        }
+        add(node) {
+            this.children.push(node);
+        }
+        remove(node) {
+            this.children = this.children.filter((child) => (child !== node));
+        }
+        getChildren() {
+            return this.children;
+        }
+    }
+    Composite.TreeNode = TreeNode;
+    class Test {
+        static runTest() {
+            let root = new TreeNode("root");
+            let a = new TreeNode("A");
+            let b = new TreeNode("B");
             a.add(b);
             root.add(a);
             console.log(root);
-        };
-        return Test;
-    }());
+        }
+    }
     Composite.Test = Test;
 })(Composite || (Composite = {}));
 // 执行测试

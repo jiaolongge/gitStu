@@ -1,37 +1,30 @@
 var Proxy;
 (function (Proxy_1) {
-    var Source = /** @class */ (function () {
-        function Source() {
-        }
+    class Source {
         // @Override
-        Source.prototype.method = function () {
+        method() {
             console.log("original method");
-        };
-        return Source;
-    }());
+        }
+    }
     Proxy_1.Source = Source;
-    var Proxy = /** @class */ (function () {
-        function Proxy() {
+    class Proxy {
+        constructor() {
             this.source = new Source();
         }
         // @Override
-        Proxy.prototype.method = function () {
+        method() {
             console.log("before proxy");
             this.source.method();
             console.log("end proxy");
-        };
-        return Proxy;
-    }());
-    Proxy_1.Proxy = Proxy;
-    var Test = /** @class */ (function () {
-        function Test() {
         }
-        Test.runTest = function () {
-            var proxy = new Proxy();
+    }
+    Proxy_1.Proxy = Proxy;
+    class Test {
+        static runTest() {
+            const proxy = new Proxy();
             proxy.method();
-        };
-        return Test;
-    }());
+        }
+    }
     Proxy_1.Test = Test;
 })(Proxy || (Proxy = {}));
 // 执行测试

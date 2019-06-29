@@ -2,47 +2,39 @@
 // 达到命令的发出者和执行者之间解耦，实现请求和执行分开
 var Command;
 (function (Command_1) {
-    var Receiver = /** @class */ (function () {
-        function Receiver() {
-        }
-        Receiver.prototype.action = function () {
+    class Receiver {
+        action() {
             console.log("commond has received");
-        };
-        return Receiver;
-    }());
+        }
+    }
     Command_1.Receiver = Receiver;
-    var Command = /** @class */ (function () {
-        function Command(receiver) {
+    class Command {
+        constructor(receiver) {
             this.receiver = receiver;
         }
         // @Override
-        Command.prototype.exe = function () {
+        exe() {
             this.receiver.action();
-        };
-        return Command;
-    }());
+        }
+    }
     Command_1.Command = Command;
-    var Invoker = /** @class */ (function () {
-        function Invoker(command) {
+    class Invoker {
+        constructor(command) {
             this.command = command;
         }
-        Invoker.prototype.action = function () {
+        action() {
             this.command.exe();
-        };
-        return Invoker;
-    }());
-    Command_1.Invoker = Invoker;
-    var Test = /** @class */ (function () {
-        function Test() {
         }
-        Test.runTest = function () {
-            var receiver = new Receiver();
-            var command = new Command(receiver);
-            var invoker = new Invoker(command);
+    }
+    Command_1.Invoker = Invoker;
+    class Test {
+        static runTest() {
+            const receiver = new Receiver();
+            const command = new Command(receiver);
+            const invoker = new Invoker(command);
             invoker.action();
-        };
-        return Test;
-    }());
+        }
+    }
     Command_1.Test = Test;
 })(Command || (Command = {}));
 // 执行测试
